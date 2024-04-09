@@ -1,19 +1,20 @@
 import { Font } from '@react-pdf/renderer';
 import axios from 'axios';
 import { ILogger } from './ILogger';
+import { FontWeight } from '@react-pdf/types';
 
 /**
  * An internal map of all the fonts we have already loaded, since there doesn't seem to be a system for it as part of react-pdf
  */
 const registeredFonts: {
-  [family: string]: { src: string; fontWeight: string; fontStyle: string; }[];
+  [family: string]: { src: string; fontWeight: FontWeight; fontStyle: string; }[];
 } = {};
 
 
 /**
  * Register custom fonts.  Provide a family at a time, along with all valid style configurations
  */
-export function registerFont(family: string, fonts: { src: string; fontWeight?: string; fontStyle?: string; }[]) {
+export function registerFont(family: string, fonts: { src: string; fontWeight?: FontWeight; fontStyle?: string; }[]) {
   Font.register({
     family,
     fonts
@@ -126,7 +127,7 @@ export async function loadReferencedFonts(fonts: string[], apiKey: string, logge
       // Go ahead and register the url provided.
       registerFont(fontRequest, Object.keys(googleMatch.files).map(key => ({
         src: googleMatch.files[key],
-        fontWeight: mappedVariants[key][0],
+        fontWeight: mappedVariants[key][0] as FontWeight,
         fontStyle: mappedVariants[key][1]
       })));
     }
