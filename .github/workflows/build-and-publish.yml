@@ -43,6 +43,7 @@ jobs:
           # Note: tags has to be all lower-case
           tags: |
             ghcr.io/skywardapps/pdf-render-service:latest
+            ghcr.io/skywardapps/pdf-render-service:${{ github.sha }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/mainline' }}
 
