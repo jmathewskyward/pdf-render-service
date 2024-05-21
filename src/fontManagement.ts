@@ -1,7 +1,7 @@
 import { Font } from '@react-pdf/renderer';
 import axios from 'axios';
 import { ILogger } from './ILogger';
-import { FontWeight } from '@react-pdf/types';
+import { FontWeight } from './ReactPdfTypeHacks';
 
 /**
  * An internal map of all the fonts we have already loaded, since there doesn't seem to be a system for it as part of react-pdf
