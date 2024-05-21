@@ -2,7 +2,7 @@ import {
   Style,
   StandardPageSize,
   Orientation,
-} from '@react-pdf/types';
+} from '../ReactPdfTypeHacks';
 
 export type ElementTypes = 'view'|'image'|'text'|'list'|'shadow'|'page'|'link';
 
